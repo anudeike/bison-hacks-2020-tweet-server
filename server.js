@@ -17,11 +17,14 @@ app.get('/', (req, res) => {
 
 app.get('/all-tweets', (req, res) => {
     // get the file information
+    // get the slice that you want
+    let amount = req.query.count || 10
     let raw = fs.readFileSync('tweets.json')
 
     let output = JSON.parse(raw)
+    output = output.slice(0, amount)
 
-    res.status(202).json(output[0]);
+    res.status(202).json(output);
 })
 
 app.listen(port, () => {
