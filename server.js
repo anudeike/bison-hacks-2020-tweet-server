@@ -21,7 +21,7 @@ app.get('/all-tweets', (req, res) => {
 
     let output = JSON.parse(raw)
 
-    res.status(202).json(output);
+    res.status(202).json(output[0]);
 })
 
 app.listen(port, () => {
